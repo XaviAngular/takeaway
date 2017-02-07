@@ -1,0 +1,12 @@
+#ensaladas .card-reveal {
+	background-color:rgba(0,77,64,0.8);
+	color:white;
+	}
+#principales .card-reveal{
+	background-color:rgba(26,35,126,0.8);
+	color:white;
+}
+#postres .card-reveal{
+	background-color:rgba(136,14,79,0.8);
+	color:white;
+}

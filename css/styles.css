@@ -23,8 +23,13 @@ h2, li a.btn-floating{text-shadow: 2px 2px 3px rgba(2, 2, 2, 1);}
 	z-index:100;
 	opacity:0;
 	transition: all .3s ease-in .15s;
+	visibility:hidden;
 }
-.desplegable:hover .submenu {opacity:1;}
+.desplegable:hover .submenu {
+		opacity:1;
+		display:block;
+		visibility:visible;
+		}
 
 
 

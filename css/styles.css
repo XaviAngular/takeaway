@@ -11,3 +11,22 @@
 	color:white;
 }
 .fixed-action-btn.horizontal ul li {margin:8px 8px 0 0}
+h2, li a.btn-floating{text-shadow: 2px 2px 3px rgba(2, 2, 2, 1);}
+.submenu li{
+			float:none;
+			background-color:blue;
+			}
+.submenu {
+	position:absolute;
+	z-index:100;
+	display:none;
+}
+
+
+
+
+
+
+
+
+

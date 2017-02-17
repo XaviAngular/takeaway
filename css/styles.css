@@ -30,6 +30,11 @@ h2, li a.btn-floating{text-shadow: 2px 2px 3px rgba(2, 2, 2, 1);}
 		display:block;
 		visibility:visible;
 		}
+/*Estilos para pushpin*/
+nav {z-index:100}
+.margensup {margin-top:10px}
+.margentop {margin-top:10px}
+
 
 
 

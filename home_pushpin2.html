@@ -1,0 +1,163 @@
+ <!DOCTYPE html>
+  <html lang="es-ES">
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+	<meta charset="utf-8">
+		<link type="text/css" rel="stylesheet" href="css/styles.css">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	   <style>
+      html, body, .block {
+        height: 100%;
+      }
+      nav ul li a:hover, nav ul li a.active {
+        background-color: rgba(0,0,0,.1);
+      }
+      footer {
+        padding-left: 0;
+      }
+    </style>
+    </head>
+
+    <body>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+	  <script>
+		$(document).ready(function(){
+			$('.pushpin-demo-nav').each(function() {
+				var $this = $(this);
+				var $target = $('#' + $(this).attr('data-target'));
+				$this.pushpin({
+				  top: $target.offset().top,
+				  bottom: $target.offset().top + $target.outerHeight() - $this.height()
+				});
+			  });
+			$('.target').pushpin({
+			  top: 0,
+			  bottom: 1000,
+			  offset: 0
+			});
+		});
+	  </script>
+	<div id="blue" class="block blue">
+  <nav class="pushpin-demo-nav pinned" data-target="blue" style="top: 0px;">
+    <div class="nav-wrapper light-blue">
+      <div class="container">
+        <a href="#" class="brand-logo">Ensaladas</a>       
+      </div>
+    </div>
+  </nav>
+ <section id="ensaladas">		
+		<div class="row margentop">
+			<div class="col s12 m6 l3">
+				<div class="card">
+				<div class="card-image waves-effect waves-block waves-light">
+				<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 14px;top:14px">
+				<a class="btn-floating btn-large red">
+				  <i class="large material-icons">shopping_basket</i>
+				</a>
+				<ul>
+				  <li><a class="btn-floating red center">1x</a></li>
+				  <li><a class="btn-floating yellow darken-1 center">2x</a></li>
+				  <li><a class="btn-floating green center">3x</a></li>
+				  <li><a class="btn-floating blue center">4x</a></li>
+				</ul>
+			  </div>
+				  <img class="activator" src="img/ensalada_capri.jpg">
+				</div>
+				<div class="card-content">
+				
+				  <span class="card-title activator grey-text text-darken-4">Ensalda Caprichosa<i class="material-icons right">more_vert</i></span>
+				  <p></p>
+	
+				</div>
+				<div class="card-reveal">
+				  <span class="card-title white-text text-darken-4">Ensalada Caprichosa<i class="material-icons right">close</i></span>
+				  <p>Deliciosa combinación gracias a la base vegetal, rica en vitaminas, al jamón dulce y al queso, que aportan proteínas y calcio al plato. El toque dulce del maíz y la zanahoria dan un sabor agradable en boca.</p>
+				</div>
+			  </div>			  
+			</div>
+			<div class="col s12 m6 l3">
+				<div class="card">
+				<div class="card-image waves-effect waves-block waves-light">
+				  <img class="activator" src="img/ensalada_cuscus.jpg">
+				</div>
+				<div class="card-content">
+				  <span class="card-title activator grey-text text-darken-4">Ensalda Cus-Cus<i class="material-icons right">more_vert</i></span>
+				  <p><a href="#">This is a link</a></p>
+				</div>
+				<div class="card-reveal">
+				  <span class="card-title white-text text-darken-4">Ensalada Cus-Cus<i class="material-icons right">close</i></span>
+				  <p>¿Te gustan los platos exóticos? Esta ensalada es ideal para los amantes del cuscús. Con una base de caldo de carne muy nutritiva, combinado con verduras y el toque dulce de las pasas. De segundo lo puedes combinar amb alguna de nuestras carnes.</p>
+				</div>
+			  </div>			  
+			</div>
+			<div class="col s12 m6 l3">
+				<div class="card">
+				<div class="card-image waves-effect waves-block waves-light">
+				  <img class="activator" src="img/ensalada_arroz.jpg">
+				</div>
+				<div class="card-content">
+				  <span class="card-title activator grey-text text-darken-4">Ensalda de Arroz<i class="material-icons right">more_vert</i></span>
+				  <p><a href="#">This is a link</a></p>
+				</div>
+				<div class="card-reveal">
+				  <span class="card-title white-text text-darken-4">Ensalada de Arroz<i class="material-icons right">close</i></span>
+				  <p>Deliciosa y refrescante ensalada de arroz, donde añadimos unos taquitos de jamón cocido y verduritas que equilibran el plato.</p>
+				</div>
+			  </div>			  
+			</div>
+			<div class="col s12 m6 l3">
+				<div class="card">
+				<div class="card-image waves-effect waves-block waves-light">
+				  <img class="activator" src="img/ensalada_pasta.jpg">
+				</div>
+				<div class="card-content">
+				  <span class="card-title activator grey-text text-darken-4">Ensalda de Pasta<i class="material-icons right">more_vert</i></span>
+				  <p><a href="#">This is a link</a></p>
+				</div>
+				<div class="card-reveal">
+				  <span class="card-title white-text text-darken-4">Ensalada de Pasta<i class="material-icons right">close</i></span>
+				  <p>Deliciosa combinación gracias a la base vegetal, rica en vitaminas, al jamón dulce y al queso, que aportan proteínas y calcio al plato. El toque dulce del maíz y la zanahoria dan un sabor agradable en boca.</p>
+				</div>
+			  </div>			  
+			</div>
+		</div>
+	</section>
+	
+</div>
+<div id="red" class="block red lighten-1">
+  <nav class="pushpin-demo-nav pin-top" data-target="red" style="top: 0px;">
+    <div class="nav-wrapper red">
+      <div class="container">
+        <a href="#" class="brand-logo">Red</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#!">Red Link 1</a></li>
+          <li><a href="#!">Red Link 2</a></li>
+          <li><a href="#!">Red Link 3</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<div id="green" class="block green lighten-1">
+  <nav class="pushpin-demo-nav pin-top" data-target="green" style="top: 0px;">
+    <div class="nav-wrapper green">
+      <div class="container">
+        <a href="#" class="brand-logo">Green</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="#!">Green Link 1</a></li>
+          <li><a href="#!">Green Link 2</a></li>
+          <li><a href="#!">Green Link 3</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+    </body>
+  </html>
+  

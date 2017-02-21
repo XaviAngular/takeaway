@@ -8,10 +8,11 @@ if ($_POST) {
 	echo $_POST['email'];
 	echo "<br>";
 	echo $_POST['mensaje'];
-	$nombre = utf8_decode($_POST['nombreApellido']);
+	$nombre = $_POST['nombreApellido'];
 	$email = $_POST['email'];
 	$mensaje = $_POST['mensaje'];
 	$mysqli = new mysqli('127.0.0.1', 'root', '', 'takeaway');
+	mysqli_set_charset($mysqli,"utf8");
 	if ($mysqli){
 		$sql="INSERT INTO contactform (nombreApellidos, email, mensaje) VALUES ( '$nombre', '$email', '$mensaje');";
 		$query=$mysqli->query($sql);

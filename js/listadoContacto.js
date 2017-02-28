@@ -5,7 +5,7 @@ $(document).ready(function() {
       type: 'GET',
       dataType: 'json',
       success : function(result){
-        console.log(result.sql);        
+        console.log(result);        
       },
       error: function(result){
         alert("errorrrrrr!!!");

@@ -7,9 +7,8 @@ if ($_SERVER['REQUEST_METHOD']==='GET'){
 	if ($mysqli) {
 		$query=$mysqli->query($sql);
 		$mysqli->close();
-		$rows = array();
-		
-	}
+		$rows = $query->fetch_all(MYSQLI_ASSOC);
+		}
 	if ($query) {
 	echo json_encode([
 		"query" 	=> $rows,

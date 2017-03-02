@@ -11,8 +11,18 @@ $(document).ready(function() {
         $.each(result.query, function() {
             if (debug) console.log("Pintando");
             var tbl_row = "";
-            $.each(this, function(k , v) {
-              tbl_row += "<td>"+v+"</td>";
+            $.each(this, function(campo , valor) {
+              if(campo=="foto") {
+                tbl_row += "<td>"
+                        +"<img class='z-depth-3' src='../"
+                        +valor
+                        +"' width='90px'>"
+                        +"</td>";                
+              }
+              else {
+                tbl_row += "<td>"+valor+"</td>";
+              }              
+             
             });            
             tbl_body += "<tr>"+tbl_row+"</tr>";
         });

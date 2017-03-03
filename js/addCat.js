@@ -9,12 +9,23 @@ $(document).ready(function() {
       if (debug) console.log("Datos en Json:");
       if (debug) console.log(jsonData);
       $.ajax({
-        url: '../php/recibeJson.php',
+        url: '../php/recibeCat.php',
         type: 'POST',
         dataType: 'json',
         data: jsonData,
         success : function(result){
           console.log(result.sql);
+          if (result.error===0) {
+            Materialize.toast('Categoría creada!', 4000); // 4000 is the duration of the toast
+            //Borrar el contenido del formulario
+            $('#formCat')[0].reset();
+            //tambien se puede usar para borrar el form
+            $('#formCat').trigger("reset");
+          }
+          else {
+            Materialize.toast('Error al crear categoría!', 6000); // 4000 is the duration of the toast
+            $('#formCat')[0].reset();
+          }
           
         },
         error: function(result){

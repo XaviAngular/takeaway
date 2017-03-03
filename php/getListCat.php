@@ -8,6 +8,11 @@ if ($_SERVER['REQUEST_METHOD']==='GET'){
 		$query=$mysqli->query($sql);
 		$mysqli->close();
 		$rows = $query->fetch_all(MYSQLI_ASSOC);
+		$array= Array();
+	while ($row=$query->fetch_array(MYSQLI_ASSOC)){
+		$array[] = $row;
+	}
+   		
 		}
 	if ($query) {
 	echo json_encode([

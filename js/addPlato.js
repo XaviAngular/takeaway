@@ -15,15 +15,16 @@ $(document).ready(function() {
             $.each(this, function(campo , valor) {
                if (campo=="id") values=valor;
                else etiquetas = valor;
-               options += "<option value='"
+            });
+            options += "<option value='"
                           +values
                           +"'>"
                           +etiquetas
-                          +"</option>";              
-            });           
+                          +"</option>";            
         });
         if (debug) console.log(options);
-        //$("#categoria").html(options);       
+        $("#categoria").html(options);
+        $('select').material_select();       
       },
       error: function(result){
         alert("errorrrrrr!!!");

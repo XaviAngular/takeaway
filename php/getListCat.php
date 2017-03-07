@@ -11,8 +11,7 @@ if ($_SERVER['REQUEST_METHOD']==='GET'){
 		$array= Array();
 	while ($row=$query->fetch_array(MYSQLI_ASSOC)){
 		$array[] = $row;
-	}
-   		
+	}   		
 		}
 	if ($query) {
 	echo json_encode([

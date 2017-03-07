@@ -294,7 +294,7 @@
       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
     </div>
   </div>
-   <?php
+<?php
 //Se comprueba que llegan datos por método POST
 if ($_POST) {	
 	$email = $_POST['email'];	

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var debug=true;
+    var debug=false;
     $.ajax({
       url: '../php/getListForm.php',
       type: 'GET',
@@ -7,7 +7,7 @@ $(document).ready(function() {
       success : function(result){
         console.log(result);
         var tbl_body = "";
-        //Recorrer el array que manda el php
+        //Recorrer el array de la query que manda el php
         $.each(result.query, function() {
             if (debug) console.log("Pintando");
             var tbl_row = "";

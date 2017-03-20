@@ -9,10 +9,14 @@ $(document).ready(function(){
       success : function(result){
         console.log(result);
        $.each(result.query, function(k,v) { 
+       		console.log(result.query);
        		var nombre=v.nombre;
        		var descripcion=v.descripcion;
        		var precio=v.precio;
        		var categoria=v.nombreCat;
+       		var imagen=v.foto;
+       		pintaCard(nombre,imagen,precio, descripcion,categoria);
+
        });     
       },
       error: function(result){
@@ -21,10 +25,7 @@ $(document).ready(function(){
     });  
 		});
 function pintaCard(titulo,img,precio,descripcion,cat){
-		var titulo="Card desde JS";
-		var img="images/hotre.jpg";
-		var precio="10.50";
-		var descripcion="Texto de ejemplo para la descripción";
+		console.log("pintaCard: "+cat);
 		var card =`
 		<div class="col s6 m4 l3">
 			<div class="card">
@@ -42,5 +43,16 @@ function pintaCard(titulo,img,precio,descripcion,cat){
 			</div>
 		</div>
 		`;
-	$('#entrantes').append(card);
+	switch (cat){
+			case "Ensaladas":
+			$('#ensaRow').append(card);
+			break;
+			case "Principales":
+			$('#princiRow').append(card);
+			break;
+			case "Postres":
+			$('#postreRow').append(card);
+			break;
+			default:console.warn("Existen platos que no coinciden con categoría");
+		}
 	}

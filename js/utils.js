@@ -1,7 +1,10 @@
+var carrito=[];
 $(document).ready(function(){
 			$('.modal').modal();
 			$('#modal1').modal('open');
 			var debug=true;
+			
+
     $.ajax({
       url: 'php/getListPlatos.php',
       type: 'GET',
@@ -15,7 +18,8 @@ $(document).ready(function(){
        		var precio=v.precio;
        		var categoria=v.nombreCat;
        		var imagen=v.foto;
-       		pintaCard(nombre,imagen,precio, descripcion,categoria);
+       		var id=v.id;
+       		pintaCard(id,nombre,imagen,precio, descripcion,categoria);
 
        });     
       },
@@ -24,12 +28,23 @@ $(document).ready(function(){
       }
     });  
 		});
-function pintaCard(titulo,img,precio,descripcion,cat){
+function pintaCard(id,titulo,img,precio,descripcion,cat){
 		console.log("pintaCard: "+cat);
 		var card =`
 		<div class="col s6 m4 l3">
 			<div class="card">
 				<div class="card-image waves-effect waves-block waves-light">
+					<div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 14px;top:14px">
+				<a class="btn-floating btn-large red">
+				  <i class="large material-icons">shopping_basket</i>
+				</a>
+				<ul>
+				  <li><a onclick="addCart(${id},1,${precio})" class="btn-floating red center">1x</a></li>
+				  <li><a onclick="addCart(${id},2,${precio})" class="btn-floating yellow darken-1 center">2x</a></li>
+				  <li><a onclick="addCart(${id},3,${precio})" class="btn-floating green center">3x</a></li>
+				  <li><a onclick="addCart(${id},4,${precio})" class="btn-floating blue center">4x</a></li>
+				</ul>
+			  </div>
 					<img class="activator" src="${img}">
 				</div>
 				<div class="card-content">
@@ -56,3 +71,8 @@ function pintaCard(titulo,img,precio,descripcion,cat){
 			default:console.warn("Existen platos que no coinciden con categoría");
 		}
 	}
+function addCart(id,cantidad,precio){
+	console.warn("Llega a carrito: "+id+","+cantidad*precio);
+	carrito.push("hola");
+	console.log(carrito);
+}

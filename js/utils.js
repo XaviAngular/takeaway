@@ -3,6 +3,14 @@ $(document).ready(function(){
 			$('.modal').modal();
 			$('#modal1').modal('open');
 			var debug=true;
+			//hayCarrito rescata la variable de localstorage para 
+			//rescatar los productos añadidos al carrito
+			var hayCarrito=localStorage.getItem('JsonCart');
+			console.log(hayCarrito);
+			hayCarrito=JSON.parse(hayCarrito);
+			for (i in hayCarrito) {
+				console.warn(hayCarrito[i].titulo);
+			}
 			
 
     $.ajax({
@@ -39,10 +47,10 @@ function pintaCard(id,titulo,img,precio,descripcion,cat){
 				  <i class="large material-icons">shopping_basket</i>
 				</a>
 				<ul>
-				  <li><a onclick="addCart(${id},1,${precio})" class="btn-floating red center">1x</a></li>
-				  <li><a onclick="addCart(${id},2,${precio})" class="btn-floating yellow darken-1 center">2x</a></li>
-				  <li><a onclick="addCart(${id},3,${precio})" class="btn-floating green center">3x</a></li>
-				  <li><a onclick="addCart(${id},4,${precio})" class="btn-floating blue center">4x</a></li>
+				  <li><a onclick="addCart(${id},1,${precio},'${titulo}')" class="btn-floating red center">1x</a></li>
+				  <li><a onclick="addCart(${id},2,${precio},'${titulo}')" class="btn-floating yellow darken-1 center">2x</a></li>
+				  <li><a onclick="addCart(${id},3,${precio},'${titulo}')" class="btn-floating green center">3x</a></li>
+				  <li><a onclick="addCart(${id},4,${precio},'${titulo}')" class="btn-floating blue center">4x</a></li>
 				</ul>
 			  </div>
 					<img class="activator" src="${img}">
@@ -71,8 +79,9 @@ function pintaCard(id,titulo,img,precio,descripcion,cat){
 			default:console.warn("Existen platos que no coinciden con categoría");
 		}
 	}
-function addCart(id,cantidad,precio){
-	console.warn("Llega a carrito: "+id+","+cantidad*precio);
-	carrito.push("hola");
+function addCart(id,cantidad,precio,titulo){	
+	carrito.push({id:id,cantidad:cantidad,precio:precio*cantidad,titulo:titulo});
 	console.log(carrito);
+	var JsonCart=JSON.stringify(carrito);
+	localStorage.setItem("JsonCart",JsonCart);
 }

@@ -1,4 +1,3 @@
-var carrito=[];
 $(document).ready(function(){
 			$('.modal').modal();
 			$('#modal1').modal('open');
@@ -80,8 +79,31 @@ function pintaCard(id,titulo,img,precio,descripcion,cat){
 		}
 	}
 function addCart(id,cantidad,precio,titulo){	
-	carrito.push({id:id,cantidad:cantidad,precio:precio*cantidad,titulo:titulo});
-	console.log(carrito);
-	var JsonCart=JSON.stringify(carrito);
+	var cartExist=localStorage.getItem("JsonCart");
+	var existeProduct=false;
+	if (cartExist!=null){
+		cartExist=JSON.parse(cartExist);
+		console.log("Ya existen productos en el carrito");
+		//buscamos si existe para añadir cantidad
+	for (i in cartExist) {
+		if (id==cartExist[i].id) {
+			//se usa esta variable para saber si lo ha encontrado
+			//si lo encuentra se pone en true para después comprobar
+			//si se añade como nuevo producto al carrito.
+			existeProduct=true;
+			cartExist[i].cantidad=cartExist[i].cantidad+cantidad;
+		}
+	}
+	if (!existeProduct){
+		cartExist.push({id:id,cantidad:cantidad,precio:precio*cantidad,titulo:titulo});
+	}
+	}
+	//este else controla que es la primera vez que se añaden productos al carrito
+	else {
+		cartExist=[];
+		carExist.push({id:id,cantidad:cantidad,precio:precio*cantidad,titulo:titulo});
+	}	
+	console.log(cartExist);
+	var JsonCart=JSON.stringify(cartExist);
 	localStorage.setItem("JsonCart",JsonCart);
 }

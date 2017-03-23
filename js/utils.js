@@ -5,12 +5,11 @@ $(document).ready(function(){
 			//hayCarrito rescata la variable de localstorage para 
 			//rescatar los productos añadidos al carrito
 			var hayCarrito=localStorage.getItem('JsonCart');
-			console.log(hayCarrito);
-			hayCarrito=JSON.parse(hayCarrito);
-			for (i in hayCarrito) {
-				console.warn(hayCarrito[i].titulo);
-			}
-			
+			if (hayCarrito!=null){
+				hayCarrito=JSON.parse(hayCarrito);
+				$('#hayProductos').remove();
+				pintaModal(hayCarrito);
+			}	
 
     $.ajax({
       url: 'php/getListPlatos.php',
@@ -80,13 +79,14 @@ function pintaCard(id,titulo,img,precio,descripcion,cat){
 	}
 function addCart(id,cantidad,precio,titulo){	
 	var cartExist=localStorage.getItem("JsonCart");
+	console.warn(cartExist);
 	var existeProduct=false;
 	if (cartExist!=null){
 		cartExist=JSON.parse(cartExist);
 		console.log("Ya existen productos en el carrito");
 		//buscamos si existe para añadir cantidad
 	for (i in cartExist) {
-		if (id==cartExist[i].id) {
+		if (cartExist[i].id==id) {
 			//se usa esta variable para saber si lo ha encontrado
 			//si lo encuentra se pone en true para después comprobar
 			//si se añade como nuevo producto al carrito.
@@ -97,13 +97,33 @@ function addCart(id,cantidad,precio,titulo){
 	if (!existeProduct){
 		cartExist.push({id:id,cantidad:cantidad,precio:precio*cantidad,titulo:titulo});
 	}
+	pintaModal(cartExist);
 	}
 	//este else controla que es la primera vez que se añaden productos al carrito
 	else {
-		cartExist=[];
-		carExist.push({id:id,cantidad:cantidad,precio:precio*cantidad,titulo:titulo});
+		//Es en el caso que previamente no existan productos en el carrito
+		cartExist=[{id:id,cantidad:cantidad,precio:precio*cantidad,titulo:titulo}];
+		$('#hayProductos').remove();
+		
+		pintaModal(cartExist);
+		
 	}	
 	console.log(cartExist);
 	var JsonCart=JSON.stringify(cartExist);
 	localStorage.setItem("JsonCart",JsonCart);
+}
+
+function pintaModal(hayCarrito){
+	$('#resProducts').empty();
+	$('#resProducts').append('<tr><th>Plato</th><th>Cantidad</th><th>Total</th>');
+	for (i in hayCarrito){
+					var nombre=hayCarrito[i].titulo;
+					var cantidad=hayCarrito[i].cantidad;
+					var precio=hayCarrito[i].precio;
+					var rowProduct=`
+						<tr><td>${nombre}</td><td>${cantidad}</td><td>${precio*cantidad}</td></tr>
+					 `;
+					$('#resProducts').append(rowProduct);
+
+				}
 }

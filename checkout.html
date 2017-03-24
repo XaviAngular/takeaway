@@ -1,0 +1,105 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+	  <script>		
+		$(document).ready(function(){
+	     var hayCarrito=localStorage.getItem('JsonCart');
+      if (hayCarrito!=null){
+        hayCarrito=JSON.parse(hayCarrito);
+        $('#hayProductos').remove();
+        pintaModal(hayCarrito);
+      }
+
+      $('#btnPay').click(function (){
+        var dataCart=JSON.stringify(hayCarrito);
+        $.ajax({
+          url: 'php/addPedido.php',
+          type: 'POST',
+          dataType: 'json',
+          data: dataCart,
+          success : function(result){
+            console.log("Se guardó correctamente el pedido");
+            
+          },
+          error: function(result){
+            alert("errorrrrrr!!!");
+          }
+        });
+      }) 
+		});
+    
+function pintaModal(hayCarrito){
+  $('#resProducts').empty();
+  $('#resProducts').append('<tr><th>Plato</th><th>Cantidad</th><th>Total</th>');
+  for (i in hayCarrito){
+          var nombre=hayCarrito[i].titulo;
+          var cantidad=hayCarrito[i].cantidad;
+          var precio=hayCarrito[i].precio;
+          var rowProduct=`
+            <tr><td>${nombre}</td><td>${cantidad}</td><td>${precio*cantidad}</td></tr>
+           `;
+          $('#resProducts').append(rowProduct);
+
+        }
+}
+	  </script>
+		<nav>
+			<div class="nav-wrapper purple darken-4">
+			  <a href="#" class="brand-logo">Take Away</a>
+			  <ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="info.html">Info</a></li>
+				<li><a href="fotos.html">Fotos</a></li>
+				<li><a href="contacto.html">Contacto</a></li>
+			  </ul>
+			</div>
+		</nav>
+
+		<section id="checkout" class="container">
+		  <table id="resProducts">
+          
+      </table>
+      <div class="row">
+      <button id="btnPay" class="btn left waves-effect btn-flat green white-text">Finalizar</button>
+      </div>
+		</section>
+	 <footer class="page-footer purple darken-4">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Footer Content</h5>
+                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright purple darken-3">
+            <div class="container">
+            © 2014 Copyright Text
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+    </body>
+  </html>

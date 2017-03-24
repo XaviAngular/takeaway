@@ -24,15 +24,17 @@
       }
 
       $('#btnPay').click(function (){
-        var dataCart=JSON.stringify(hayCarrito);
+        var hayCarrito=localStorage.getItem('JsonCart');
+        console.log(hayCarrito);
+        
         $.ajax({
-          url: 'php/addPedido.php',
+          url: 'php/recibePedido.php',
           type: 'POST',
           dataType: 'json',
-          data: dataCart,
+          data: hayCarrito,
           success : function(result){
             console.log("Se guardó correctamente el pedido");
-            
+            console.log(result);            
           },
           error: function(result){
             alert("errorrrrrr!!!");
@@ -40,7 +42,7 @@
         });
       }) 
 		});
-    
+
 function pintaModal(hayCarrito){
   $('#resProducts').empty();
   $('#resProducts').append('<tr><th>Plato</th><th>Cantidad</th><th>Total</th>');

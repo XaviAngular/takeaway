@@ -25,29 +25,49 @@
 			  </ul>
 			</div>
 		</nav>
-	<section id="contacto">
-		<form id="contactForm" action="php/recibedatos.php" method="post">
-			<div class="container">
-				<div class="row">
-					<div class="col l6 m6 s12 input-field">
-					<input placeholder="Nombre y Apellido" id="nombreApellido" name="nombreApellido" type="text" class="validate" required value="Xavi García" >
-					<label for="nombreApellido">Nombre</label>
-					</div>
-					<div class="col l6 m6 s12 input-field">
-					<input id="email" name="email" type="email" class="validate" required value="mail@mail.com">
-					<label for="email" data-error="Email incorrecto">Email</label>
-					</div>
-					<div class="col l12 m12 s12 input-field">
-					<textarea id="mensaje" class="materialize-textarea" name="mensaje"></textarea>
-					<label for="mensaje">Mensaje</label>
-					</div>
-					<button class="btn waves-effect waves-light" type="submit" name="action">Enviar
-					<i class="material-icons right">send</i>
-					</button>
-				</div>
-			</div>
-		</form>
-	</section>
+  <div class="row">
+    <div class="col s12 m6 l6">
+      <div class="col s12 m12 l12">
+        <h2>Info</h2>
+        <p>Horario: Lun-Vie de 10 a 15 y de 19 a 22h</p>
+        <p>Sábados y Domingos de 9 a 16 y de 19 a 23</p>
+        <p>Telf: 98 789 63 69</p>
+        <p>E-mail: hola@takeawaygeltrudis.com</p>
+      </div>
+      <div class="col s12 m12 l12">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.8639652112383!2d1.7273260154207608!3d41.22473487927946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a386e3d7d1cd7f%3A0xbcb7d33096643a59!2sRambla+del+Castell%2C+28%2C+08800+Vilanova+i+la+Geltr%C3%BA%2C+Barcelona!5e0!3m2!1ses!2ses!4v1490293024946" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>    
+      </div>
+    </div>
+
+    <div class="col s12 m6 l6 valign-wrapper">
+
+      <section id="contacto">
+       <h3>Formulario Contacto</h3>
+    <form id="contactForm" action="php/recibedatos.php" method="post">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 m6 s12 input-field">
+          <input id="nombreApellido" name="nombreApellido" type="text" class="validate" required>
+          <label for="nombreApellido">Nombre</label>
+          </div>
+          <div class="col l6 m6 s12 input-field">
+          <input id="email" name="email" type="email" class="validate" required>
+          <label for="email" data-error="Email incorrecto">Email</label>
+          </div>
+          <div class="col l12 m12 s12 input-field">
+          <textarea id="mensaje" class="materialize-textarea" name="mensaje"></textarea>
+          <label for="mensaje">Mensaje</label>
+          </div>
+          <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+          <i class="material-icons right">send</i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+    </div>  
+  </div>
+	
 	 <footer class="page-footer purple darken-4">
           <div class="container">
             <div class="row">

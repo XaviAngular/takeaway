@@ -4,19 +4,22 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
 	//Para almacenar los datos JSON recibidos en una variable
 	$request= file_get_contents('php://input');
 	//Para convertir un Json en un array de php
-	$datos = json_decode($request,true);
-	$valores='"';
-	$campos="";
+	$datos = json_decode($request, true);
+	$ids='';
+	$cantidades="";
+	$importe=0;
 	
-	foreach ($request as $key => $value){
-	$campos .= $value[0].',';
-	$valores.= $value[1].'","';
+	foreach ($datos as $value){
+	$ids .= $value['id'].',';
+	$cantidades.= $value['cantidad'].',';
+	$importe=$importe+$value['precio']*$value['cantidad'];
 	}
-	$campos = substr($campos,0, -1);
-	$valores = substr($valores,0, -2);
-	$sqlPedido = "INSERT INTO pedidos (id_cliente,importe) VALUES ('1','50'); SELECT LAST_INSERT_ID()";
+
+	$ids = substr($ids,0, -1);
+	$cantidades = substr($cantidades,0, -1);
+	$sqlPedido = "INSERT INTO pedidos (id_cliente,importe) VALUES ('1','$importe'); SELECT LAST_INSERT_ID()";
 	
-	$sql = "INSERT INTO detalle_pedido ($campos) VALUES ($valores)";
+	$sql = "INSERT INTO detalle_pedido (id_plato,cantidad,id_pedido) VALUES ('$ids','$cantidades')";
 	$mysqli = new mysqli('127.0.0.1', 'root', '', 'takeaway');
 
 	mysqli_set_charset($mysqli,"utf8");
@@ -24,22 +27,23 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
 		//$query=$mysqli->query($sqlPedido);
 		//$lastID=$query->fetch_all(MYSQLI_ASSOC);
 		$mysqli->close();
+		$query=true;
 	}
 
 	if ($query) {
 	echo json_encode([
-		"campos" 	=> $campos,
+		"ids" 	=> $ids,
 		"error"		=> 0,
-		"valores"	=> $valores,
-		"sql"		=> $sqlPedido,
+		"sqlpedido"	=> $sqlPedido,
+		"sql"		=> $sql,
 		"resultado" => "se ha grabado"
 		]);	
 	}
 	else {
 		echo json_encode([
-		"campos" 	=> $datos,
-		"error"		=> 1,
-		"valores"	=> $valores,
+		"ids" 	=> $ids,
+		"error"		=> 0,
+		"sqlpedido"	=> $sqlPedido,
 		"sql"		=> $sql,
 		"resultado" => "NO se ha grabado!!"
 		]);	

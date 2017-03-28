@@ -34,7 +34,11 @@
           data: hayCarrito,
           success : function(result){
             console.log("Se guardó correctamente el pedido");
-            console.log(result);            
+            console.log(result);
+            localStorage.clear('JsonCart');
+            $('#checkout').fadeOut();
+            $('#thanks').fadeIn(1500);
+
           },
           error: function(result){
             alert("errorrrrrr!!!");
@@ -54,6 +58,7 @@ function pintaModal(hayCarrito){
             <tr><td>${nombre}</td><td>${cantidad}</td><td>${precio*cantidad}</td></tr>
            `;
           $('#resProducts').append(rowProduct);
+
 
         }
 }
@@ -78,6 +83,12 @@ function pintaModal(hayCarrito){
       <button id="btnPay" class="btn left waves-effect btn-flat green white-text">Finalizar</button>
       </div>
 		</section>
+    <section id="thanks">
+    <div class="valign-wrapper green lighten-2" style="height:100px;">
+  <h5 style="width:100%" class="center white-text">Tu pedido se ha completado con éxito, muchas gracias!!</h5>
+</div>
+      
+    </section>
 	 <footer class="page-footer purple darken-4">
           <div class="container">
             <div class="row">

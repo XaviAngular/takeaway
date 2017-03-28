@@ -9,28 +9,35 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
 	$cantidades="";
 	$importe=0;
 	
-	foreach ($datos as $value){
-	$ids .= $value['id'].',';
-	$cantidades.= $value['cantidad'].',';
+	foreach ($datos as $value){	
 	$importe=$importe+$value['precio']*$value['cantidad'];
 	}
 
 	$ids = substr($ids,0, -1);
 	$cantidades = substr($cantidades,0, -1);
-	$sqlPedido = "INSERT INTO pedidos (id_cliente,importe) VALUES (1,200);";
+	$sqlPedido = "INSERT INTO pedidos (id_cliente,importe) VALUES (1,$importe);";
 	
-	$sql = "INSERT INTO detalle_pedido (id_plato,cantidad,id_pedido) VALUES ('$ids','$cantidades'); SELECT_LAST_INSERT_ID()";
+	
 	$mysqli = new mysqli('127.0.0.1', 'root', '', 'takeaway');
 
 	mysqli_set_charset($mysqli,"utf8");
 	if ($mysqli) {
 		$query=$mysqli->query($sqlPedido);
-		$lastID=$mysqli->insert_id;				
+		$lastID=$mysqli->insert_id;
+		$sqlDetalle="INSERT INTO detalle_pedido (id_pedido, id_plato, cantidad, importe) VALUES ";
+		foreach ($datos as $value){	
+		$id_plato=$value['id'];
+		$cantidad=$value['cantidad'];
+		$importe=$value['precio'];
+		$sqlDetalle.="($lastID,$id_plato,$cantidad,$importe),";
+	}
+	$sqlDetalle = substr($sqlDetalle,0, -1);
+	$queryDetalle=$mysqli->query($sqlDetalle);
 	}
 
-	if ($query) {		
+	if (($query) && ($queryDetalle)) {		
 	echo json_encode([
-		"ids" 	=> $ids,
+		"sqlDetalle" 	=> $sqlDetalle,
 		"error"		=> 0,
 		"sqlpedido"	=> $sqlPedido,
 		"lastid"		=> $lastID,

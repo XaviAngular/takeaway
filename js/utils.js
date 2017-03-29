@@ -1,6 +1,8 @@
 $(document).ready(function(){
 			$('.modal').modal();
-			$('#modal1').modal('open');
+			$(".button-collapse").sideNav();
+			//$('#modal1').modal('open');
+			$('#pasaCajaBtn').hide();
 			var debug=true;
 			//hayCarrito rescata la variable de localstorage para 
 			//rescatar los productos añadidos al carrito
@@ -8,6 +10,7 @@ $(document).ready(function(){
 			if (hayCarrito!=null){
 				hayCarrito=JSON.parse(hayCarrito);
 				$('#hayProductos').remove();
+				$('#pasaCajaBtn').show();
 				pintaModal(hayCarrito);
 			}	
 
@@ -109,6 +112,7 @@ function addCart(id,cantidad,precio,titulo){
 		
 	}	
 	console.log(cartExist);
+	$('#pasaCajaBtn').show();
 	var JsonCart=JSON.stringify(cartExist);
 	localStorage.setItem("JsonCart",JsonCart);
 }

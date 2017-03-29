@@ -19,7 +19,8 @@
 	   <nav>
 			<div class="nav-wrapper purple darken-4">
 			  <a href="#" class="brand-logo">Take Away</a>
-			  <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+			  <ul class="right hide-on-med-and-down">
 				<li class="desplegable">
 					<a href="index.html">Inicio</a>
 					<ul class="submenu">
@@ -33,6 +34,13 @@
 				<li><a href="contacto.html">Contacto</a></li>
 				<li><a href="#modalCarrito"><i class="material-icons">shopping_cart</i></a></li>
 			  </ul>
+        <ul class="side-nav" id="mobile-demo">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="info.html">Info</a></li>
+        <li><a href="fotos.html">Fotos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="#modalCarrito"><i class="material-icons">shopping_cart</i></a></li>
+        </ul>
 			</div>
 		</nav>
 	<!-- Ensaldas -->
@@ -112,7 +120,7 @@
       </table>
     </div>
     <div class="modal-footer">
-      <a href="checkout.html" class="btn waves-effect btn-flat red left white-text">Pasar por caja</a>
+      <a href="checkout.html" id="pasaCajaBtn"  class="btn waves-effect btn-flat red left white-text">Pasar por caja</a>
 
       <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
     </div>

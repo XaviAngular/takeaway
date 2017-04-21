@@ -7,7 +7,14 @@ $nombre = $_POST['nombre'];
 $desc = $_POST['descripcion'];
 $foto = "img/cats/".$_POST['foto'];
 
-$sql = "INSERT INTO categoria (nombre,descripcion,foto) VALUES ('$nombre','$desc','$foto')";
+//comprobar si es un update
+if(isset($_GET['update'])){
+	$id= $_POST['id'];
+	$sql = "UPDATE categoria SET nombre='$nombre', descripcion='$desc',foto='$foto' WHERE id=$id";
+}
+else {$sql = "INSERT INTO categoria (nombre,descripcion,foto) VALUES ('$nombre','$desc','$foto')";}
+
+
 $mysqli = new mysqli('127.0.0.1', 'root', '', 'takeaway');
 mysqli_set_charset($mysqli,"utf8");
 if ($mysqli) {
@@ -34,7 +41,7 @@ if(isset($_GET['files']))
             $error = true;
         }
     }
-    $data = ($error) ? array('error' => $lleganFiles) : array('files' => $datos, 'llega' => $lleganFiles);
+    $data = ($error) ? array('error' => $lleganFiles) : array('files' => $datos, 'llega' => $sql);
 }
 else
 {

@@ -1,8 +1,9 @@
 $(document).ready(function (){
 var debug=true;        
 $('.row').fadeIn(1500);
-$('#contactForm').hide();
-$('#contactForm').slideDown(1500);
+$('#contacto').hide();
+$('#gracias').hide();
+$('#contacto').slideDown(1500);
 //Capturamos evento submit del form con jQuery. A destacar que reciba la variable event para que en firefox no de problemas.
 $('#contactForm').submit(function(event){
 	//El event.preventDefault evita que se haga un submit por defecto. Así no se ejecuta el atributo action.
@@ -15,8 +16,10 @@ $('#contactForm').submit(function(event){
 		data: jsonData,
 		dataType: 'json',
 		success: function(result){
-			console.log("Todo ha ido bien");
-			console.log(result);
+			if (debug) console.log("Todo ha ido bien");
+			if (debug) console.log(result);
+			$('#contacto').slideUp();
+			$('#gracias').show();
 		},
 		error: function(result){
 			alert("Erroooooooor!!");

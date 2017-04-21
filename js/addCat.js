@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var debug=false;
+    var debug=true;
     $('select').material_select();
     $("#formCat").submit(function(event){
       event.preventDefault();//Evita el refresh automático que se produce al enviar el form

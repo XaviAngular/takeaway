@@ -1,7 +1,7 @@
 <?php
 //Para comprobar si se recibe un post desde un ajax
 if ($_SERVER['REQUEST_METHOD']==='GET'){	
-	$sql = "SELECT a.id, a.nombre, a.descripcion, a.precio, b.nombre as nombreCat, a.foto, a.activado FROM platos a, categoria b where a.id_categoria=b.id";
+	$sql = "SELECT a.id, a.nombre, a.descripcion, a.precio, b.nombre as nombreCat, a.foto, a.activado, a.id_categoria FROM platos a, categoria b where a.id_categoria=b.id";
 	
 	$mysqli = new mysqli('127.0.0.1', 'root', '', 'takeaway');
 	mysqli_set_charset($mysqli,"utf8");

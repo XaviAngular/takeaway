@@ -8,26 +8,19 @@ $(document).ready(function() {
         console.log(result);
         var tbl_body = "";
         //Recorrer el array de la query que manda el php
-        $.each(result.query, function() {
-            if (debug) console.log("Pintando");
-            if (debug) console.log(result.cats);
-
-            var tbl_row = "";
-            $.each(this, function(campo , valor) {
-              if(campo=="foto") {
-                tbl_row += "<td>"
-                        +"<img class='z-depth-3' src='../"
-                        +valor
-                        +"' width='90px'>"
-                        +"</td>";                
-              }
-              else {
-                tbl_row += "<td>"+valor+"</td>";
-              }              
-             
+        $.each(result.query, function(key,value) {
+                tbl_body+="<tr>";
+                tbl_body+="<td>"+value.nombre+"</td>";
+                tbl_body+="<td>"+value.precio+"</td>";
+                tbl_body+="<td><img width='90px' src=../"+value.foto+"></td>";
+                if (value.activado=="on") tbl_body+="<td><i class='material-icons green-text lighten-3'>visibility</i></td>";
+                else tbl_body+="<td><i class='material-icons red-text accent-3'>visibility_off</i></td>";
+                tbl_body+="<td>"+value.nombreCat+"</td>";
+                tbl_body+="<td><span onClick='verPlato("+value+")'><i class='material-icons'>search</i></span></td>";
+                tbl_body+="</tr>";
             });            
-            tbl_body += "<tr>"+tbl_row+"</tr>";
-        });
+           
+      
         if (debug) console.log(tbl_body);
         $("#listado tbody").html(tbl_body);       
       },

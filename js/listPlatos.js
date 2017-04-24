@@ -32,7 +32,7 @@ $(document).ready(function() {
 });
 
 function verPlato(plato){
-  $('.card-title').html(plato.nombre);
+  $('.titulo').html(plato.nombre);
   $('#precio').html(plato.precio);
   $('#desc').html(plato.descripcion);
   $('#foto').attr('src',"../"+plato.foto);

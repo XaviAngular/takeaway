@@ -1,4 +1,5 @@
 $(document).ready(function() {
+   $('.modal').modal();
     var debug=true;
     $.ajax({
       url: '../php/getListPlatos.php',
@@ -31,5 +32,9 @@ $(document).ready(function() {
 });
 
 function verPlato(plato){
-  console.log(plato);
+  $('.card-title').html(plato.nombre);
+  $('#precio').html(plato.precio);
+  $('#desc').html(plato.descripcion);
+  $('#foto').attr('src',"../"+plato.foto);
+  $('#vistaPlato').modal('open');
 }    

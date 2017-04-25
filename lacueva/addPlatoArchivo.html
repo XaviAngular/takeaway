@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <script type="text/javascript" src="../js/addPlatoArchivo.js"></script>
+    <div class="container">
+    <h2>Nuevo Plato</h2>
+    <form id="formPlato">
+    <div class="row">
+    <div class="col s12 m6 l6 input-field">
+        <div class="switch">
+    <label>
+      Off
+      <input type="checkbox" name="activado">
+      <span class="lever"></span>
+      On
+    </label>
+  </div>
+    </div>
+     <div class="col s12 m6 l6 input-field">
+       <input id="nombre" name="nombre" type="text" class="validate">
+       <label for="nombre">Nombre</label>
+    </div>
+    <div class="col s12 m6 l6 input-field">
+       <select id="categoria" name="id_categoria">
+          <!-- <option value="" selected disabled>Elige Categoría</option>
+          <option value="1">Ensaladas</option>
+          <option value="2">Principales</option>
+          <option value="3">Postres</option> -->
+
+       </select>
+    </div>   
+    <div class="col s12 m6 l6 input-field">
+       <input id="precio" name="precio" type="number" class="validate" step="0.01">
+       <label for="foto">Precio</label>
+    </div>
+
+    <div class="col s12 m12 l12 input-field">
+      <textarea id="descripcion" name="descripcion" class="materialize-textarea"></textarea>
+      <label for="descripcion">Descripción</label>
+    </div>
+
+    <div class="col s12 m6 l6 file-field input-field">
+      <div class="btn">
+        <span>Imagen</span>
+        <input type="file">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" name="foto" type="text">
+      </div>
+    </div>
+
+    <div class="col s12 m6 l6 input-field">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+      <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </div>
+</form>     
+    </div>		  
+  </body>
+</html>

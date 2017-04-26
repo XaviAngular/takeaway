@@ -15,15 +15,19 @@ foreach($_FILES as $file){
 		$files[]="no se ha subido archivo";
 		}
 	}
+	$foto = "img/cats/".$_POST['foto'];
+	}
+	else {
+		$foto = $_POST['foto'];
 	}
 
 	$nombre = $_POST['nombre'];
 	$descripcion= $_POST['descripcion'];
-	$foto = "img/cats/".$_POST['foto'];
+	
 
 	if ($_GET['update']) {
 		$id=$_POST['id'];
-		$foto = $_POST['foto'];
+		
 		$sql="UPDATE categoria SET nombre='$nombre', descripcion='$descripcion', foto='$foto' WHERE id=$id";
 	}
 	else {

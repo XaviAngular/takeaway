@@ -1,6 +1,12 @@
+var files=null;
 $(document).ready(function() {
     var debug=false;
-     $('.modal').modal();
+    //Se prepara evento para capturar el archivo
+    $('input[type=file]').on('change',function(event){
+      files= event.target.files;
+      console.log(files);
+    })
+    $('.modal').modal();
     $.ajax({
       url: '../php/getListCat.php',
       type: 'GET',
@@ -30,6 +36,11 @@ function editCat(categoria){
   $('#nombre').val(categoria.nombre);
   $('#descripcion').val(categoria.descripcion);
   $('#foto').val(categoria.foto);
+  $('#imgPreview').attr('src',"../"+categoria.foto);
   $('#id').val(categoria.id);
   $('#editaCat').modal('open');
-}     
+}
+
+function updateCat(){
+  
+}    

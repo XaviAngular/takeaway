@@ -42,5 +42,39 @@ function editCat(categoria){
 }
 
 function updateCat(){
-  
+  console.log("Actualizamos categoria");
+  var formElement = document.getElementById("formCat");
+  var miForm = new FormData(formElement);
+  //añadir el archivo al formdata para enviar
+  if (files){
+  $.each(files,function(key,value){
+    miForm.append(key,value);
+  })
+  }
+  $.ajax({
+        url: '../php/recibeCatArchivo.php?update=yes',
+        type: 'POST',
+        dataType: 'json',
+        data: miForm,
+        processData: false,
+        contentType:false,
+        success : function(result){
+          console.log(result.sql);
+          if (result.error===0) {
+            Materialize.toast('Categoría creada!', 4000); // 4000 is the duration of the toast
+            //Borrar el contenido del formulario
+            $('#formCat')[0].reset();
+            //tambien se puede usar para borrar el form
+            $('#formCat').trigger("reset");
+          }
+          else {
+            Materialize.toast('Error al crear categoría!', 6000); // 4000 is the duration of the toast
+            $('#formCat')[0].reset();
+          }
+          
+        },
+        error: function(result){
+          alert("errorrrrrr!!!");
+        }
+      })
 }    

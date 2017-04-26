@@ -21,7 +21,14 @@ foreach($_FILES as $file){
 	$descripcion= $_POST['descripcion'];
 	$foto = "img/cats/".$_POST['foto'];
 
-	$sql = "INSERT INTO categoria (nombre,descripcion,foto) VALUES ('$nombre','$descripcion','$foto')";
+	if ($_GET['update']) {
+		$id=$_POST['id'];
+		$sql="UPDATE categoria SET nombre='$nombre', descripcion='$descripcion', foto='$foto' WHERE id=$id";
+	}
+	else {
+		$sql = "INSERT INTO categoria (nombre,descripcion,foto) VALUES ('$nombre','$descripcion','$foto')";
+	}
+	
 	
 	$mysqli = new mysqli('127.0.0.1', 'root', '', 'takeaway');
 	mysqli_set_charset($mysqli,"utf8");

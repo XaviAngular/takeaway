@@ -23,6 +23,7 @@ foreach($_FILES as $file){
 
 	if ($_GET['update']) {
 		$id=$_POST['id'];
+		$foto = $_POST['foto'];
 		$sql="UPDATE categoria SET nombre='$nombre', descripcion='$descripcion', foto='$foto' WHERE id=$id";
 	}
 	else {

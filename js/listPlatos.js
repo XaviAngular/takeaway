@@ -18,6 +18,7 @@ $(document).ready(function() {
                 else tbl_body+="<td><i class='material-icons red-text accent-3'>visibility_off</i></td>";
                 tbl_body+="<td>"+value.nombreCat+"</td>";
                 tbl_body+="<td><span onClick='verPlato("+JSON.stringify(value)+")'><i class='material-icons'>search</i></span></td>";
+                tbl_body+="<td><span onClick='editaPlato("+JSON.stringify(value)+")'><i class='material-icons'>settings</i></span></td>";
                 tbl_body+="</tr>";  
             });            
            
@@ -37,4 +38,8 @@ function verPlato(plato){
   $('#desc').html(plato.descripcion);
   $('#foto').attr('src',"../"+plato.foto);
   $('#vistaPlato').modal('open');
+}
+
+function editaPlato(plato){
+  $('#editaPlato').modal('open');
 }    

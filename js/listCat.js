@@ -78,4 +78,28 @@ function updateCat(){
           alert("errorrrrrr!!!");
         }
       })
-}    
+}
+
+function removeCat (){
+  var idCat=$('#id').val();
+  var confirmar= confirm ("Vas a elimininar una categoría, estas seguro?");
+  if (confirmar) {
+    console.log("se elimina categoría");
+    $.ajax({
+        url: '../php/removeCatPlat.php?tipo=cat&id='+idCat,
+        type: 'GET',
+        dataType : 'json',
+        success: function(result){
+
+        },
+        error: function(){
+            alert("Error borrando categoría");
+        }
+
+    })
+  }
+  else {
+    console.log("Se cancela eliminar categoría");
+  }
+
+}   

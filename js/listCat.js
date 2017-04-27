@@ -38,6 +38,7 @@ function editCat(categoria){
   $('#foto').val(categoria.foto);
   $('#imgPreview').attr('src',"../"+categoria.foto);
   $('#id').val(categoria.id);
+  Materialize.updateTextFields();
   $('#editaCat').modal('open');
 }
 

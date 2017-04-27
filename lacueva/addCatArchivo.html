@@ -8,6 +8,10 @@
     <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+      .nueva {margin-top:30px;}
+      .modal {min-height:82%;}
+      </style>
   </head>
   <body>
     <!--Import jQuery before materialize.js-->
@@ -15,7 +19,18 @@
     <script type="text/javascript" src="../js/materialize.min.js"></script>
     <script type="text/javascript" src="../js/addCatArchivo.js"></script>
     <div class="container">
-    <h2>Nueva Categoría</h2>
+    <div class="row">
+      <div class="col s9 m9 l9">
+      <h2>Listado Categorias</h2>
+      </div>
+      <div class="center nueva col s3 m3 l3">
+        <a href="adminCat.html">
+
+        <i class="medium material-icons">note_add</i><br>
+        <span>Listado</span>
+        </a>
+      </div>
+      </div>
 <form id="formCat" enctype="multipart/form-data">
   <div class="row">
     <div class="col s12 m6 l6 input-field">

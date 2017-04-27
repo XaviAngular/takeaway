@@ -7,6 +7,10 @@
       <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <style>
+      .nueva {margin-top:30px;}
+      .modal {min-height:82%;}
+      </style>
     </head>
     <body>
       <!--Import jQuery before materialize.js-->
@@ -14,7 +18,18 @@
       <script type="text/javascript" src="../js/materialize.min.js"></script>
       <script type="text/javascript" src="../js/listCat.js"></script>
       <div class="container">
+      <div class="row">
+      <div class="col s9 m9 l9">
       <h2>Listado Categorias</h2>
+      </div>
+      <div class="center nueva col s3 m3 l3">
+        <a href="addCatArchivo.html">
+
+        <i class="medium material-icons">note_add</i><br>
+        <span>Crear</span>
+        </a>
+      </div>
+      </div>
       <table id="listado">
       <thead>
       <tr>
@@ -64,15 +79,13 @@
     </div>
     <div class="col s12 m6 l6 input-field">
       <button class="red btn waves-effect waves-light" onclick="removeCat()" name="action">Eliminar
-      <i class="material-icons right">send</i>
+      <i class="material-icons right">delete</i>
       </button>
     </div>
   </div>
 </form>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
-    </div>
+    
   </div> 
     </body>
   </html>

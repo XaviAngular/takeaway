@@ -25,7 +25,7 @@ foreach($_FILES as $file){
 	$descripcion= $_POST['descripcion'];
 	
 
-	if ($_GET['update']) {
+	if ($_GET) {
 		$id=$_POST['id'];
 		
 		$sql="UPDATE categoria SET nombre='$nombre', descripcion='$descripcion', foto='$foto' WHERE id=$id";

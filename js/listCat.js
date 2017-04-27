@@ -90,7 +90,7 @@ function removeCat (){
         type: 'GET',
         dataType : 'json',
         success: function(result){
-
+            materialize.toast(result.resultado,2000);
         },
         error: function(){
             alert("Error borrando categoría");

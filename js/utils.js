@@ -68,7 +68,7 @@ function pintaCard(id,titulo,img,precio,descripcion,cat){
 		</div>
 		`;
 	switch (cat){
-			case "Ensaladas":
+			case "Entrantes":
 			$('#ensaRow').append(card);
 			break;
 			case "Principales":

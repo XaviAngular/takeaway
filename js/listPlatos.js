@@ -1,5 +1,10 @@
+var files=null;
 $(document).ready(function() {
    $('.modal').modal();
+   $('input[type=file]').on('change',function(event){
+      files= event.target.files;
+      console.log(files);
+    })
     var debug=true;
     $.ajax({
       url: '../php/getListPlatos.php',
@@ -49,9 +54,40 @@ function editaPlato(plato){
   $('#precioEdit').val(plato.precio);
   $('#fotoEdit').val(plato.foto);
   $('#categoriaEdit').val(plato.id_categoria);
-  $('#activadoEdit').val(plato.activado);
+  console.log('Id plato: '+plato.id);
+  $('#idPlato').val(plato.id);
   $('select').material_select();
+   Materialize.updateTextFields();
   $('#editaPlato').modal('open');
+}
+
+function updatePlato(){
+  var formElement = document.getElementById("formPlato");
+  var miForm = new FormData(formElement);
+  //añadir el archivo al formdata para enviar
+  if (files){
+  $.each(files,function(key,value){
+    miForm.append(key,value);
+  })
+  }
+  $.ajax({
+        url: '../php/recibePlatoArchivo.php?update=yes',
+        type: 'POST',
+        dataType: 'json',
+        data: miForm,
+        processData: false,
+        contentType:false,
+        success : function(result){
+          event.preventDefault();
+          console.log(result.sql);
+            
+          
+        },
+        error: function(result){
+          event.preventDefault();
+          alert("errorrrrrr!!!");
+        }
+      })  
 }
 
 function cargaCats(){

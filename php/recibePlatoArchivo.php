@@ -5,33 +5,38 @@ if ($_POST){
 	$nombre=$_POST['nombre'];
 	$precio=$_POST['precio'];
 	$descripcion=$_POST['descripcion'];
-	$foto="img/".$_POST['foto'];
+	
 	$activado=$_POST['activado'];
 	$id_categoria=$_POST['id_categoria'];
 
 //subida de archivos
-	if(isset($_GET['files']))
-{  
-    $error = false;
-    $files = array();
-    if ($_FILES) $lleganFiles="Llegan files"; else $lleganFiles="No llegan files";
-    $uploaddir = '../img/';
-    foreach($_FILES as $file)
-    {
-        if(move_uploaded_file($file['tmp_name'], "$uploaddir".basename($file['name'])))
-        {
-            $files[] = $uploaddir .$file['name'];
-        }
-        else
-        {
-            $error = true;
-        }
-    }
-   
-}
-//fin subida archivos
+if ($_FILES) {
+		$files = array();
+		$uploadDir= "../img/";
 
-	$sql = "INSERT INTO platos (nombre,precio,descripcion,foto,activado,id_categoria) VALUES ('$nombre','$precio','$descripcion','$foto','$activado','$id_categoria')";
+	foreach($_FILES as $file){
+	if (move_uploaded_file($file['tmp_name'], "$uploadDir".basename($file['name'])))
+	{
+		$files[]= $uploadDir.$file['name'];
+	}
+	else {
+		$files[]="no se ha subido archivo";
+		}
+	}
+	$foto = "img/".$_POST['foto'];
+	}
+	else {
+		$foto = $_POST['foto'];
+	}
+//fin subida archivos
+	if (isset($_GET['update'])){
+		$id=$_POST['idPlato'];
+		$sql="UPDATE platos SET nombre='$nombre', precio='$precio',descripcion='$descripcion', foto='$foto', activado='$activado',id_categoria='$id_categoria' WHERE id=$id";
+	}
+	else {
+		$sql = "INSERT INTO platos (nombre,precio,descripcion,foto,activado,id_categoria) VALUES ('$nombre','$precio','$descripcion','$foto','$activado','$id_categoria')";
+	}
+	
 	$mysqli = new mysqli('127.0.0.1', 'root', '', 'takeaway');
 	mysqli_set_charset($mysqli,"utf8");
 	if ($mysqli) {

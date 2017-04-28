@@ -62,6 +62,7 @@
   <div id="editaPlato" class="modal">
     <div class="modal-content">
        <form id="formPlato">
+       <input type="hidden" id="idPlato" name="idPlato">
     <div class="row">
     <div class="col s12 m6 l6 input-field">
         <div class="switch">
@@ -102,7 +103,7 @@
     </div>
 
     <div class="col s12 m6 l6 input-field">
-      <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+      <button class="btn waves-effect waves-light" onclick="updatePlato()" name="action">Enviar
       <i class="material-icons right">send</i>
       </button>
     </div>

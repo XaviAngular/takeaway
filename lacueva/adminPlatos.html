@@ -67,7 +67,7 @@
         <div class="switch">
     <label>
       Off
-      <input type="checkbox" name="activado">
+      <input type="checkbox" id="activadoEdit" name="activado" checked="checked">
       <span class="lever"></span>
       On
     </label>
@@ -78,17 +78,12 @@
        <label for="nombre">Nombre</label>
     </div>
     <div class="col s12 m6 l6 input-field">
-       <select id="categoria" name="id_categoria">
-          <!-- <option value="" selected disabled>Elige Categoría</option>
-          <option value="1">Ensaladas</option>
-          <option value="2">Principales</option>
-          <option value="3">Postres</option> -->
-
+       <select id="categoriaEdit" name="id_categoria">
        </select>
     </div>   
     <div class="col s12 m6 l6 input-field">
-       <input id="precio" name="precio" type="number" class="validate" step="0.01">
-       <label for="foto">Precio</label>
+       <input id="precioEdit" name="precio" type="number" class="validate" step="0.01">
+       <label for="precio">Precio</label>
     </div>
 
     <div class="col s12 m12 l12 input-field">
@@ -102,7 +97,7 @@
         <input type="file">
       </div>
       <div class="file-path-wrapper">
-        <input class="file-path validate" name="foto" type="text">
+        <input class="file-path validate" id="fotoEdit" name="foto" type="text">
       </div>
     </div>
 

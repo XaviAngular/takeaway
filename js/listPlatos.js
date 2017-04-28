@@ -29,7 +29,8 @@ $(document).ready(function() {
       error: function(result){
         alert("errorrrrrr!!!");
       }
-    });    
+    });
+    cargaCats();   
 });
 
 function verPlato(plato){
@@ -42,7 +43,18 @@ function verPlato(plato){
 
 function editaPlato(plato){
   
+  (plato.activado=='on') ? $('#activadoEdit').prop('checked',true):$('#activadoEdit').prop('checked',false);
+  $('#nombre').val(plato.nombre);
+  $('#descripcion').val(plato.descripcion);
+  $('#precioEdit').val(plato.precio);
+  $('#fotoEdit').val(plato.foto);
+  $('#categoriaEdit').val(plato.id_categoria);
+  $('#activadoEdit').val(plato.activado);
+  $('select').material_select();
+  $('#editaPlato').modal('open');
+}
 
+function cargaCats(){
   $.ajax({
       url: '../php/getSelectCat.php',
       type: 'GET',
@@ -54,7 +66,7 @@ function editaPlato(plato){
         var options ="";      
         //Recorrer el array de la query que manda el php
         $.each(result.query, function() {
-            if (debug) console.log("Pintando");
+            
             $.each(this, function(campo , valor) {
                if (campo=="id") values=valor;
                else etiquetas = valor;
@@ -65,20 +77,12 @@ function editaPlato(plato){
                           +etiquetas
                           +"</option>";            
         });
-        if (debug) console.log(options);
-        $("#categoria").html(options);
+        
+        $("#categoriaEdit").html(options);
         $('select').material_select();       
       },
       error: function(result){
         alert("errorrrrrr!!!");
       }
     });
-  $('#activado').val(plato.activado);
-  $('#nombre').val(plato.nombre);
-  $('#descripcion').val(plato.descripcion);
-  console.log(parseInt(plato.precio));
-  $('#precio').val(parseInt(plato.precio));
-  Materialize.updateTextFields();
-  $('select').material_select();
-  $('#editaPlato').modal('open');
-}    
+}   

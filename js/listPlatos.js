@@ -7,7 +7,7 @@ $(document).ready(function() {
     })
     var debug=true;
     $.ajax({
-      url: '../php/getListPlatos.php',
+      url: '../php/getListPlatos.php?todos=yes',
       type: 'GET',
       dataType: 'json',
       success : function(result){

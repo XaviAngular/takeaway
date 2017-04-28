@@ -78,8 +78,8 @@ function updatePlato(){
         processData: false,
         contentType:false,
         success : function(result){
-          event.preventDefault();
-          console.log(result.sql);
+          
+          Materialize.toast('¡Actualizado!',2000);
             
           
         },
@@ -89,7 +89,29 @@ function updatePlato(){
         }
       })  
 }
+function removePlat (){
+  var idPlat=$('#idPlato').val();
+  var confirmar= confirm ("Vas a elimininar una categoría, estas seguro?");
+  if (confirmar) {
+    console.log("se elimina categoría");
+    $.ajax({
+        url: '../php/removeCatPlat.php?tipo=plat&id='+idPlat,
+        type: 'GET',
+        dataType : 'json',
+        success: function(result){
+            Materialize.toast(result.resultado,2000);
+        },
+        error: function(){
+            alert("Error borrando categoría");
+        }
 
+    })
+  }
+  else {
+    console.log("Se cancela eliminar categoría");
+  }
+
+}   
 function cargaCats(){
   $.ajax({
       url: '../php/getSelectCat.php',

@@ -34,11 +34,12 @@ h2, li a.btn-floating{text-shadow: 2px 2px 3px rgba(2, 2, 2, 1);}
 nav {z-index:100}
 .margensup {margin-top:10px}
 .margentop {margin-top:10px}
-#visor,#minis{width:600px;margin: 0 auto;}
-#minis div {width:25%;float:left}
-.thumb img {width:100%}
-
-
+/*Reglas para visor*/
+#visor,#minis{width:80%;margin: 0 auto}
+#minis div {width:25%;float:left;border-right:3px solid transparent;}
+#minis div:last-child{border-right:none}
+.thumb img {width:100%;}
+#minis {display: flex}
 #visor img{width:100%}
 
 

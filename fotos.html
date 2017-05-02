@@ -5,7 +5,8 @@
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
+      <link href="css/styles.css" rel="stylesheet">
+      
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
@@ -15,13 +16,9 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
 	  <script>
-		console.log("Esto es un mensaje por consola");
-		console.warn("Mensaje de aviso/advertencia");
-		console.error("Mensaje de error");
-		$(document).ready(function(){
-			$('.carousel.carousel-slider').carousel({fullWidth: true});
-			console.log("La página está cargada");	  
-		});
+		function cargaFoto(imagen){
+      $('#visor img').attr('src','img/visor/'+imagen+'.jpg');
+    }
 	  </script>
 		<nav>
 			<div class="nav-wrapper purple darken-4">
@@ -34,37 +31,25 @@
 			  </ul>
 			</div>
 		</nav>
-		<section id="carrusel" class="hide-on-small-only">
-			<div class="carousel carousel-slider">
-				<a class="carousel-item" href="#one!"><img src="http://lorempixel.com/800/400/food/1"></a>
-				<a class="carousel-item" href="#two!"><img src="http://lorempixel.com/800/400/food/2"></a>
-				<a class="carousel-item" href="#three!"><img src="http://lorempixel.com/800/400/food/3"></a>
-				<a class="carousel-item" href="#four!"><img src="http://lorempixel.com/800/400/food/4"></a>
-			</div>
-		</section>
-		<section id="carrmobile" class="hide-on-med-and-up">
-			  <div class="carousel carousel-slider center" data-indicators="true">
-    <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2">button</a>
+		<div class="container">
+      <div id="visor" class="green">
+        <img src="img/visor/menorca1.jpg" alt="Menorca playa" title="Menorca Playa">
+      </div>
+      <div id="minis">
+        <div class="thumb">
+          <img onclick="cargaFoto('menorca1')" src="img/visor/minis/menorca1_thumb.jpg" alt="Playa Menorca" title="Playa Menorca">
+        </div>
+        <div class="thumb">
+          <img onclick="cargaFoto('menorca2')" src="img/visor/minis/menorca2_thumb.jpg" alt="Puerto Mahón" title="Puerto Mahón">
+        </div>
+        <div class="thumb">
+           <img onclick="cargaFoto('menorca3')" src="img/visor/minis/menorca3_thumb.jpg" alt="Puerto Ciutadella" title="Puerto Ciutadella">
+        </div>
+        <div class="thumb">
+           <img onclick="cargaFoto('menorca4')" src="img/visor/minis/menorca4_thumb.jpg" alt="Cala Escorxada" title="Cala Escorxada">
+        </div>
+      </div>
     </div>
-    <div class="carousel-item red white-text" href="#one!">
-      <h2>First Panel</h2>
-      <p class="white-text">This is your first panel</p>
-    </div>
-    <div class="carousel-item amber white-text" href="#two!">
-      <h2>Second Panel</h2>
-      <p class="white-text">This is your second panel</p>
-    </div>
-    <div class="carousel-item green white-text" href="#three!">
-      <h2>Third Panel</h2>
-      <p class="white-text">This is your third panel</p>
-    </div>
-    <div class="carousel-item blue white-text" href="#four!">
-      <h2>Fourth Panel</h2>
-      <p class="white-text">This is your fourth panel</p>
-    </div>
-  </div>
-		</section>
 	 <footer class="page-footer purple darken-4">
           <div class="container">
             <div class="row">

@@ -34,6 +34,12 @@ h2, li a.btn-floating{text-shadow: 2px 2px 3px rgba(2, 2, 2, 1);}
 nav {z-index:100}
 .margensup {margin-top:10px}
 .margentop {margin-top:10px}
+#visor,#minis{width:600px;margin: 0 auto;}
+#minis div {width:25%;float:left}
+.thumb img {width:100%}
+
+
+#visor img{width:100%}
 
 
 

@@ -1,6 +1,7 @@
  <!DOCTYPE html>
   <html>
     <head>
+    <meta charset="utf-8">
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -17,6 +18,10 @@
 	  <script>		
 		$(document).ready(function(){
 	     var hayCarrito=localStorage.getItem('JsonCart');
+       var hayCookie=getCookie('cliente');
+       console.warn(hayCookie);
+      if (hayCookie) console.log ('Hay cookie');
+      else console.log('No hay cookie');
       if (hayCarrito!=null){
         hayCarrito=JSON.parse(hayCarrito);
         $('#hayProductos').remove();
@@ -62,6 +67,21 @@ function pintaModal(hayCarrito){
 
         }
 }
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 	  </script>
 		<nav>
 			<div class="nav-wrapper purple darken-4">
@@ -79,6 +99,40 @@ function pintaModal(hayCarrito){
 		  <table id="resProducts">
           
       </table>
+      <div class="row">
+        <form id="formCheckout">
+          <div class="col s12 m6 l6 input-field">
+            <input id="nombre" name="nombre" type="text" class="validate">
+          <label for="nombre">Nombre</label>     
+          </div>
+          <div class="col s12 m6 l6 input-field">
+            <input id="email" name="email" type="text" class="validate">
+          <label for="email">E-mail</label>     
+          </div>
+          <div class="col s12 m6 l6 input-field">
+            <input id="telefono" name="telefono" type="text" class="validate">
+          <label for="telefono">Telf.</label>     
+          </div>
+          <div class="col s12 m6 l6 input-field">
+            <input id="cp" name="cp" type="text" class="validate">
+          <label for="cp">C.P.</label>     
+          </div>
+          <div class="col s12 m6 l6 input-field">
+            <input id="direccion" name="direccion" type="text" class="validate">
+          <label for="direccion">Dirección</label>     
+          </div>
+          <div class="col s12 m6 l6 input-field">
+            <input id="poblacion" name="poblacion" type="text" class="validate">
+          <label for="poblacion">Población</label>     
+          </div>
+          <div class="col s12 m6 l6 input-field">
+            <input id="password" name="password" type="password" class="validate">
+          <label for="password">Contraseña</label>     
+          </div>
+         
+
+        </form>
+      </div>
       <div class="row">
       <button id="btnPay" class="btn left waves-effect btn-flat green white-text">Finalizar</button>
       </div>

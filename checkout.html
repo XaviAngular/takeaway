@@ -31,12 +31,13 @@
       $('#btnPay').click(function (){
         var hayCarrito=localStorage.getItem('JsonCart');
         console.log(hayCarrito);
+var formulario = JSON.stringify($('#formCheckout').serializeArray());
         
         $.ajax({
-          url: 'php/recibePedido.php',
+          url: 'php/recibePedidoCompleto.php',
           type: 'POST',
           dataType: 'json',
-          data: hayCarrito,
+          data: {carrito:hayCarrito,cliente:formulario},
           success : function(result){
             console.log("Se guardó correctamente el pedido");
             console.log(result);
@@ -103,7 +104,7 @@ function getCookie(cname) {
         <form id="formCheckout">
           <div class="col s12 m6 l6 input-field">
             <input id="nombre" name="nombre" type="text" class="validate">
-          <label for="nombre">Nombre</label>     
+          <label for="nombre">Nombre</label>   
           </div>
           <div class="col s12 m6 l6 input-field">
             <input id="email" name="email" type="text" class="validate">

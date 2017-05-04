@@ -10,6 +10,21 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
 	$cantidades="";
 	$importe=0;
 	
+	$valores='"';
+	$campos="";
+	//var_dump($cliente[0]['value']) ;
+	
+	foreach ($cliente as $key => $value){
+	$campos .= $value['name'].',';
+	$valores.= $value['value'].'","';
+	}
+	$campos = substr($campos,0, -1);
+	$valores = substr($valores,0, -2);
+
+	$sqlCli = "INSERT INTO clientes ($campos) VALUES ($valores)";
+
+	
+
 	foreach ($datos as $value){	
 	$importe=$importe+$value['precio']*$value['cantidad'];
 	}

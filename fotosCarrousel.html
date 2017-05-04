@@ -21,7 +21,9 @@
       $('#visor img').attr('src','img/visor/'+imagen+'.jpg');
       $('#visor img').fadeIn();
     }
-   
+    $(document).ready(function(){
+      $('.carousel').carousel();
+    });
 	  </script>
 		<nav>
 			<div class="nav-wrapper purple darken-4">
@@ -38,21 +40,13 @@
       <div id="visor">
         <img src="img/visor/menorca1.jpg" alt="Menorca playa" title="Menorca Playa">
       </div>
-      <div id="minis">
-        <div class="thumb">
-          <img onclick="cargaFoto('menorca1')" src="img/visor/minis/menorca1_thumb.jpg" alt="Playa Menorca" title="Playa Menorca">
-        </div>
-        <div class="thumb">
-          <img onclick="cargaFoto('menorca2')" src="img/visor/minis/menorca2_thumb.jpg" alt="Puerto Mahón" title="Puerto Mahón">
-        </div>
-        <div class="thumb">
-           <img onclick="cargaFoto('menorca3')" src="img/visor/minis/menorca3_thumb.jpg" alt="Puerto Ciutadella" title="Puerto Ciutadella">
-        </div>
-        <div class="thumb">
-           <img onclick="cargaFoto('menorca4')" src="img/visor/minis/menorca4_thumb.jpg" alt="Cala Escorxada" title="Cala Escorxada">
-        </div>
-      </div>
-
+     
+  <div class="carousel">
+    <a class="carousel-item" href="#one!"> <img onclick="cargaFoto('menorca1')" src="img/visor/minis/menorca1_thumb.jpg" alt="Playa Menorca" title="Playa Menorca"></a>
+    <a class="carousel-item" href="#two!"> <img onclick="cargaFoto('menorca2')" src="img/visor/minis/menorca2_thumb.jpg" alt="Puerto Mahón" title="Puerto Mahón"></a>
+    <a class="carousel-item" href="#three!"><img onclick="cargaFoto('menorca3')" src="img/visor/minis/menorca3_thumb.jpg" alt="Puerto Ciutadella" title="Puerto Ciutadella"></a>
+    <a class="carousel-item" href="#four!"><img onclick="cargaFoto('menorca4')" src="img/visor/minis/menorca4_thumb.jpg" alt="Cala Escorxada" title="Cala Escorxada"></a>    
+  </div>
     </div>
 	 <footer class="page-footer purple darken-4">
           <div class="container">

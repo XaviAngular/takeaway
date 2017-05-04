@@ -1,6 +1,7 @@
  <!DOCTYPE html>
   <html>
     <head>
+    <meta charset="UTF-8">
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -21,7 +22,9 @@
       $('#visor img').attr('src','img/visor/'+imagen+'.jpg');
       $('#visor img').fadeIn();
     }
-   
+   $(document).ready(function(){
+      $('.slider').slider();
+    });
 	  </script>
 		<nav>
 			<div class="nav-wrapper purple darken-4">
@@ -35,24 +38,40 @@
 			</div>
 		</nav>
 		<div class="container">
-      <div id="visor">
-        <img src="img/visor/menorca1.jpg" alt="Menorca playa" title="Menorca Playa">
-      </div>
-      <div id="minis">
-        <div class="thumb">
-          <img onclick="cargaFoto('menorca1')" src="img/visor/minis/menorca1_thumb.jpg" alt="Playa Menorca" title="Playa Menorca">
+     <div class="slider">
+    <ul class="slides">
+      <li>
+        <img onclick="cargaFoto('menorca1')" src="img/visor/minis/menorca1_thumb.jpg" alt="Playa Menorca" title="Playa Menorca"> <!-- random image -->
+        <div class="caption center-align">
+          <h2 class="lime">!MENORCA¡</h2>
+          <h5 class="light amber grey-text text-lighten-3">Qui va...I torna!!</h5>
         </div>
-        <div class="thumb">
-          <img onclick="cargaFoto('menorca2')" src="img/visor/minis/menorca2_thumb.jpg" alt="Puerto Mahón" title="Puerto Mahón">
+      </li>
+      <li>
+        <img onclick="cargaFoto('menorca2')" src="img/visor/minis/menorca2_thumb.jpg" alt="Puerto Mahón" title="Puerto Mahón"> <!-- random image -->
+        <div class="caption left-align">
+          <h2>Port de Maó</h2>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
         </div>
-        <div class="thumb">
-           <img onclick="cargaFoto('menorca3')" src="img/visor/minis/menorca3_thumb.jpg" alt="Puerto Ciutadella" title="Puerto Ciutadella">
+      </li>
+      <li>
+        <img onclick="cargaFoto('menorca3')" src="img/visor/minis/menorca3_thumb.jpg" alt="Puerto Ciutadella" title="Puerto Ciutadella"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
         </div>
-        <div class="thumb">
-           <img onclick="cargaFoto('menorca4')" src="img/visor/minis/menorca4_thumb.jpg" alt="Cala Escorxada" title="Cala Escorxada">
+      </li>
+      <li>
+        <img onclick="cargaFoto('menorca4')" src="img/visor/minis/menorca4_thumb.jpg" alt="Cala Escorxada" title="Cala Escorxada"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
         </div>
-      </div>
-
+      </li>
+    </ul>
+  </div>
+     
+ 
     </div>
 	 <footer class="page-footer purple darken-4">
           <div class="container">

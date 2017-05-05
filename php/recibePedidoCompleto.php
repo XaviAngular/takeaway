@@ -37,6 +37,10 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
 	$cantidades = substr($cantidades,0, -1);
 	$sqlPedido = "INSERT INTO pedidos (id_cliente,importe) VALUES ($lastIdCli,$importe);";	
 
+	$sqlCliente= "SELECT * FROM clientes WHERE id=$lastIdCli";
+	$queryCliente =  $mysqli->query($sqlCliente);
+	$rowsCliente = $queryCliente->fetch_all(MYSQLI_ASSOC);
+
 	mysqli_set_charset($mysqli,"utf8");
 	if ($mysqli) {
 		$query=$mysqli->query($sqlPedido);
@@ -50,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
 	}
 	$sqlDetalle = substr($sqlDetalle,0, -1);
 	$queryDetalle=$mysqli->query($sqlDetalle);
+
 	}
 	$query=true;
 	$queryDetalle=true;
@@ -57,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
 	echo json_encode([
 		"pedido" 	=> $datos,
 		"error"		=> 0,
-		"cliente"	=> $cliente,
+		"cliente"	=> $rowsCliente,
 		"resultado" => "se ha grabado"
 		]);	
 	}

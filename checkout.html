@@ -44,6 +44,9 @@ var formulario = JSON.stringify($('#formCheckout').serializeArray());
             localStorage.clear('JsonCart');
             $('#checkout').fadeOut();
             $('#thanks').fadeIn(1500);
+            var cookieCli = JSON.stringify(result.cliente);
+            console.log("cliente='"+cookieCli+"");
+  document.cookie="cliente="+cookieCli+";"+360+";path=/";
 
           },
           error: function(result){

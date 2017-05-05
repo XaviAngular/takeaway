@@ -12,7 +12,10 @@ $(document).ready(function(){
 				$('#hayProductos').remove();
 				$('#pasaCajaBtn').show();
 				pintaModal(hayCarrito);
-			}	
+			}
+			var cookieCli=document.cookie;
+			console.log(cookieCli);
+			if (cookieCli) $('#loginCli').html('<a href="#">Mi cuenta</a>')	
 
     $.ajax({
       url: 'php/getListPlatos.php',

@@ -16,8 +16,15 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
 	//var_dump($cliente[0]['value']) ;
 	
 	foreach ($cliente as $key => $value){
+if ($value['name']=='password'){
+	$campos .= $value['name'].',';
+	$valores.= md5($value['value']).'","';
+}
+else {
 	$campos .= $value['name'].',';
 	$valores.= $value['value'].'","';
+}
+	
 	}
 	$campos = substr($campos,0, -1);
 	$valores = substr($valores,0, -2);

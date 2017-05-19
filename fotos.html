@@ -110,8 +110,38 @@
 
     function pintaPost(titulo,contenido,posicion,foto){
 
+      if (posicion){
+      var post=`
+        <div class="col s8">
+        <div class="titulo">
+            <h5>${titulo}</h5>
+        </div>
+          <p class="flow-text">
+            ${contenido}
+          </p>
+        </div>
+        <div class="col s4">
+            <img style="max-width:100%" src="${foto}" alt="${titulo}">
+        </div>
+      `;
+      }
+      else {
+        var post=`
+        <div class="col s4">
+            <img style="max-width:100%" src="${foto}" alt="${titulo}">
+        </div>
+        <div class="col s8">
+        <div class="titulo">
+            <h5>${titulo}</h5>
+        </div>
+          <p class="flow-text">
+            ${contenido}
+          </p>
+        </div>        
+      `;
+      }
       
-
+ $('#entradas').append(post);
 
     }
    

@@ -13,32 +13,7 @@
 
     <body>
       <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-	  <script>
-    $(document).ready(function(){
-      $.ajax({
-        url: 'http://wpadp.esy.es/wp-json/wp/v2/posts',
-        type: 'GET',
-        dataType: 'JSON',
-        success: function(result){
-            console.log(result);
-        },
-        error: function(){
-          alert("Error Llamada");
-        }
-      })
-     
-      
-
-    })
-		function cargaFoto(imagen){
-      $('#visor img').hide();
-      $('#visor img').attr('src','img/visor/'+imagen+'.jpg');
-      $('#visor img').fadeIn();
-    }
-   
-	  </script>
+    
 		<nav>
 			<div class="nav-wrapper purple darken-4">
 			  <a href="#" class="brand-logo">Take Away</a>
@@ -70,6 +45,11 @@
       </div>
 
     </div>
+
+    <div class="row" id="entradas">
+
+      
+    </div>
 	 <footer class="page-footer purple darken-4">
           <div class="container">
             <div class="row">
@@ -95,5 +75,41 @@
             </div>
           </div>
         </footer>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      var posicion=true;
+      $.ajax({
+        url: 'http://wpadp.esy.es/wp-json/wp/v2/posts',
+        type: 'GET',
+        dataType: 'JSON',
+        success: function(result){
+            console.log(result);
+            for (i in result) {
+  var contenido = result[i].content.rendered;
+  var titulo    = result[i].title.rendered;
+  posicion = !posicion;
+  pintaPost(titulo,contenido,posicion);
+
+            }
+        },
+        error: function(){
+          alert("Error Llamada");
+        }
+      })
+     
+      
+
+    })
+    function cargaFoto(imagen){
+      $('#visor img').hide();
+      $('#visor img').attr('src','img/visor/'+imagen+'.jpg');
+      $('#visor img').fadeIn();
+    }
+   
+    </script>
+
     </body>
   </html>

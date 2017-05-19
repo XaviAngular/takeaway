@@ -82,7 +82,7 @@
     $(document).ready(function(){
       var posicion=true;
       $.ajax({
-        url: 'http://wpadp.esy.es/wp-json/wp/v2/posts',
+        url: 'http://wpadp.esy.es/wp-json/wp/v2/posts/?_embed',
         type: 'GET',
         dataType: 'JSON',
         success: function(result){
@@ -90,8 +90,9 @@
             for (i in result) {
   var contenido = result[i].content.rendered;
   var titulo    = result[i].title.rendered;
+  var foto = result[i]._embedded["wp:featuredmedia"][0].source_url;
   posicion = !posicion;
-  pintaPost(titulo,contenido,posicion);
+  pintaPost(titulo,contenido,posicion,foto);
 
             }
         },
@@ -99,14 +100,19 @@
           alert("Error Llamada");
         }
       })
-     
-      
-
     })
+
     function cargaFoto(imagen){
       $('#visor img').hide();
       $('#visor img').attr('src','img/visor/'+imagen+'.jpg');
       $('#visor img').fadeIn();
+    }
+
+    function pintaPost(titulo,contenido,posicion,foto){
+
+      
+
+
     }
    
     </script>

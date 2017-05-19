@@ -109,9 +109,10 @@
     }
 
     function pintaPost(titulo,contenido,posicion,foto){
-
+      console.log("la posicion es: "+posicion);
       if (posicion){
       var post=`
+        <div class="row">
         <div class="col s8">
         <div class="titulo">
             <h5>${titulo}</h5>
@@ -122,11 +123,13 @@
         </div>
         <div class="col s4">
             <img style="max-width:100%" src="${foto}" alt="${titulo}">
+        </div>
         </div>
       `;
       }
       else {
         var post=`
+        <div class="row">
         <div class="col s4">
             <img style="max-width:100%" src="${foto}" alt="${titulo}">
         </div>
@@ -137,7 +140,8 @@
           <p class="flow-text">
             ${contenido}
           </p>
-        </div>        
+        </div>
+        </div>       
       `;
       }
       

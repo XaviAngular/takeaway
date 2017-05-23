@@ -99,6 +99,23 @@ function showPosition(position) {
     var lng= position.coords.longitude;
     console.log('Latitud: '+ lat);
     console.log('Longitud: '+ lng);
+    var data={lat:lat,lng:lng};
+    data = JSON.stringify(data);
+    
+    $.ajax({
+      url: 'php/recibeGeo.php',
+      type: 'POST',
+      dataType: 'JSON',
+      data:data,
+      success: function (resultado){
+        console.log(resultado);
+      },
+      error: function (){
+        console.error('error  al guardar geo');
+      }
+    })
+    
+    
 }
 	  </script>
 		<nav>

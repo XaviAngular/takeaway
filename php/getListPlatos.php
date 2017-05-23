@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD']==='GET'){
 	if ($mysqli) {
 		$query=$mysqli->query($sql);
 		
-		$mysqli->close();
+	
 		$rows = $query->fetch_all(MYSQLI_ASSOC);
 		
 		}
@@ -39,4 +39,5 @@ echo json_encode([
 		"resultado"	=> "no hay"
 	]);
 }
+	$mysqli->close();
 ?>
